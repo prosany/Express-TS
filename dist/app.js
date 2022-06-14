@@ -17,6 +17,8 @@ const cors_1 = __importDefault(require("cors"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const morgan_1 = __importDefault(require("morgan"));
 const index_1 = __importDefault(require("./Config/index"));
+// Datbase Connection
+require("./Utils/DatabaseConfigrations");
 // Initialize the app
 const app = (0, express_1.default)();
 // Enable CORS for all requests

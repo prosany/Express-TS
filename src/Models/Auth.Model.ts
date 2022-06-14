@@ -1,8 +1,17 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
 import UUID from "../Helpers/UUID";
-const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+interface IAuth {
+  _id: string;
+  userId: string;
+  email: string;
+  password: string;
+  verified: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const userSchema = new Schema<IAuth>(
   {
     userId: {
       type: String,
@@ -27,6 +36,6 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model("user", userSchema);
+const User = model("user", userSchema);
 export default User;
 //#endregion

@@ -11,6 +11,9 @@ import createError from "http-errors";
 import morgan from "morgan";
 import Config from "./Config/index";
 
+// Datbase Connection
+require("./Utils/DatabaseConfigrations");
+
 // Initialize the app
 const app: Application = express();
 
