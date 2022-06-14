@@ -9,6 +9,7 @@ import cors from "cors";
 import { Server } from "http";
 import createError from "http-errors";
 import morgan from "morgan";
+import compression from "compression";
 import Config from "./Config/index";
 
 // Datbase Connection
@@ -19,16 +20,19 @@ const app: Application = express();
 
 // Enable CORS for all requests
 app.use(cors());
+app.use(compression());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("Public"));
+app.enable("trust proxy");
 
 // Common Route
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
   res.send({
     status: 1,
     message: "🎉 Congratulations! SurVideo Server is Up and Running 🎉",
+    ip: req.ip,
   });
 });
 
